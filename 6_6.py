@@ -34,16 +34,16 @@ def method_turn(matrix):
         print('\nmax|a_ij| = ', _max)
         sin, cos = phi(matrix, _max, _i, _j)
         print(f'sin(phi_{k}) = ', sin, f'cos(phi_{k}) = ', cos)
-        H = np.eye(n)
-        H[_i][_i] = H[_j][_j] = cos
-        H[_i][_j] = -sin
-        H[_j][_i] = sin
-        print('\nH =', H, '\n')
-        H_T = H.transpose()
-        print('H^T =', H_T, '\n')
-        x = np.matmul(x, H)
-        matrix = np.matmul(np.matmul(H_T, matrix), H)
-        print(f'A({k + 1}) = H({k})^T * A({k}) * H({k}) = ', matrix)
+        U = np.eye(n)
+        U[_i][_i] = U[_j][_j] = cos
+        U[_i][_j] = -sin
+        U[_j][_i] = sin
+        print('\nU =', U, '\n')
+        U_T = U.transpose()
+        print('U^T =', U_T, '\n')
+        x = np.matmul(x, U)
+        matrix = np.matmul(np.matmul(U_T, matrix), U)
+        print(f'A({k + 1}) = U({k})^T * A({k}) * U({k}) = ', matrix)
         print('-----------------------------------------------')
         k += 1
     for j in range(n):
