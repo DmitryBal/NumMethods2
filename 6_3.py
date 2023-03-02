@@ -41,8 +41,7 @@ def new_ab(a, b):
     return -a[~np.eye(a.shape[0], dtype=bool)].reshape(a.shape[0], -1), b
 
 
-def iteration(flag,method, a, b, epsilon):
-    print(method)
+def iteration(flag, a, b, epsilon):
     k = 0
     _eps = epsilon
     # _a = max_row(a)
@@ -74,8 +73,10 @@ def iteration(flag,method, a, b, epsilon):
 if __name__ == '__main__':
     printMatrix(A, B)
     _A, _B = new_ab(A, B)
-    X_z = iteration(1, '\nМетод Зейделя:', _A, _B, eps)
-    X_i = iteration(0, '\nМетод простых итераций:', _A, _B, eps)
+    print('Метод Зейделя:')
+    X_z = iteration(1, _A, _B, eps)
+    print('\nМетод простых итераций:')
+    X_i = iteration(0, _A, _B, eps)
     print('Метод Зейделя: x =', X_z)
     print('Метод простых итераций: x =', X_i)
     print('Решение с помощью встроенной функции numpy.linalg.solve(): x =', np.linalg.solve(A, B))
