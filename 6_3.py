@@ -48,7 +48,7 @@ def iteration(flag, a, b, epsilon):
     # _a = max_row(a)
     # epsilon *= np.absolute((1-_a) / _a)
     x_new = np.zeros(n)
-    while _eps > epsilon or k == 0:
+    while _eps >= epsilon:
         if k == 0:
             x = b
         else:
@@ -57,7 +57,7 @@ def iteration(flag, a, b, epsilon):
         for i in range(n):
             # Метод Зейделя
             if flag == 1:
-                x_new[i] = sum(x_new[0:i] * a[i, 0:i]) + sum(x[i + 1:n] * a[i, i:n])
+                x_new[i] = sum(x_new[0:i] * a[i, 0:i]) + sum(x[i+1:n] * a[i, i:n])
             # Метод простых итераций
             else:
                 x_new[i] = sum(a[i, :] * np.delete(x, i))
@@ -88,4 +88,3 @@ if __name__ == '__main__':
     print('Решение с помощью встроенной функции numpy.linalg.solve(): x =', np.linalg.solve(A, B))
     print('Погрешность Метода Зейделя:', max_div(test_1, B))
     print('Погрешность Метода простых итераций:', max_div(test_2, B))
-   
