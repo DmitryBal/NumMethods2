@@ -77,6 +77,14 @@ if __name__ == '__main__':
     X_z = iteration(1, _A, _B, eps)
     print('\nМетод простых итераций:')
     X_i = iteration(0, _A, _B, eps)
+    test_1 = []
+    test_2 = []
+    for i in range(n):
+        test_1.append(sum(A[i, :] * X_z))
+        test_2.append(sum(A[i, :] * X_i))
     print('Метод Зейделя: x =', X_z)
     print('Метод простых итераций: x =', X_i)
     print('Решение с помощью встроенной функции numpy.linalg.solve(): x =', np.linalg.solve(A, B))
+    print('Погрешность Метода Зейделя:', max_div(test_1, B))
+    print('Погрешность Метода простых итераций:', max_div(test_2, B))
+   
