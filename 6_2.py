@@ -38,15 +38,13 @@ def run_method(a, d):
     for i in range(1, n):
         index = n - i - 1
         x[index] = P[index] * x[index + 1] + Q[index]
-    return np.array([x, P, Q])
+    return x, P, Q
 
 
 if __name__ == '__main__':
     printMatrix(a, b)
-    P = run_method(a, b)[1]
-    Q = run_method(a,b)[2]
+    x, P, Q = run_method(a, b)
     print('P = ', P)
     print('Q = ', Q)
-    x = run_method(a, b)[0]
     for i in range(n):
         print(f'x{i + 1} = ', x[i])
