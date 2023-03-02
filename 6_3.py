@@ -41,58 +41,41 @@ def new_ab(a, b):
     return -a[~np.eye(a.shape[0], dtype=bool)].reshape(a.shape[0], -1), b
 
 
-# декоратор для итерационных методов
-def iteration(flag, method):
-    def iteration_decorator(func):
-        def wrapper(a, b, epsilon):
-            print(method)
-            k = 0
-            _eps = epsilon
-            # _a = max_row(a)
-            # epsilon *= np.absolute((1-_a) / _a)
+def iteration(flag,method, a, b, epsilon):
+    print(method)
+    k = 0
+    _eps = epsilon
+    # _a = max_row(a)
+    # epsilon *= np.absolute((1-_a) / _a)
+    x_new = np.zeros(n)
+    while _eps > epsilon or k == 0:
+        if k == 0:
+            x = b
+        else:
+            x = x_new
             x_new = np.zeros(n)
-            while _eps > epsilon or k == 0:
-                if k == 0:
-                    x = b
-                else:
-                    x = x_new
-                    x_new = np.zeros(n)
-                for i in range(n):
-                    # Метод Зейделя
-                    if flag == 1:
-                        x_new[i] = sum(x_new[0:i] * a[i, 0:i]) + sum(x[i + 1:n] * a[i, i:n])
-                    # Метод простых итераций
-                    else:
-                        x_new[i] = sum(a[i, :] * np.delete(x, i))
-                    x_new[i] += b[i]
-                _eps = max_div(x_new, x)
-                print('N = ', k)
-                print('eps = ', _eps)
-                print('x* =', x_new)
-                print('-----------------------------------------------')
-                k += 1
-            return x_new
-        return wrapper
-    return iteration_decorator
-
-
-# Метод Зейделя
-@iteration(1, '\nМетод Зейделя:')
-def zeidel(a, b, epsilon):
-    pass
-
-
-# Метод простых итераций
-@iteration(0, '\nМетод простых итераций:')
-def iteration(a, b, epsilon):
-    pass
+        for i in range(n):
+            # Метод Зейделя
+            if flag == 1:
+                x_new[i] = sum(x_new[0:i] * a[i, 0:i]) + sum(x[i + 1:n] * a[i, i:n])
+            # Метод простых итераций
+            else:
+                x_new[i] = sum(a[i, :] * np.delete(x, i))
+            x_new[i] += b[i]
+        _eps = max_div(x_new, x)
+        print('N = ', k)
+        print('eps = ', _eps)
+        print('x* =', x_new)
+        print('-----------------------------------------------')
+        k += 1
+    return x_new
 
 
 if __name__ == '__main__':
     printMatrix(A, B)
     _A, _B = new_ab(A, B)
-    X_z = zeidel(_A, _B, eps)
-    X_i = iteration(_A, _B, eps)
+    X_z = iteration(1, '\nМетод Зейделя:', _A, _B, eps)
+    X_i = iteration(0, '\nМетод простых итераций:', _A, _B, eps)
     print('Метод Зейделя: x =', X_z)
     print('Метод простых итераций: x =', X_i)
     print('Решение с помощью встроенной функции numpy.linalg.solve(): x =', np.linalg.solve(A, B))
