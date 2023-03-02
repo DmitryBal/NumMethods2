@@ -35,9 +35,9 @@ def max_row(a):
 
 # Преобразование матриц для итерационных методов
 def new_ab(a, b):
+    b /= a.diagonal()
     for i in range(n):
-        b[i] /= a[i][i]
-        a[i:i+1, ] = [k / a[i][i] for k in a[i:i+1, ]]
+        a[i, :] /= a[i][i]
     return -a[~np.eye(a.shape[0], dtype=bool)].reshape(a.shape[0], -1), b
 
 
