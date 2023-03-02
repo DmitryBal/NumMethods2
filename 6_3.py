@@ -41,6 +41,7 @@ def new_ab(a, b):
     return -a[~np.eye(a.shape[0], dtype=bool)].reshape(a.shape[0], -1), b
 
 
+# Метод Зейделя / Простых итераций
 def iteration(flag, a, b, epsilon):
     k = 0
     _eps = epsilon
