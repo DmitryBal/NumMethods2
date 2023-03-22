@@ -20,7 +20,7 @@ def max_elem(matrix):
 # Функция нахождения sin и cos угла поворота
 def phi(matrix, _max, _i, _j):
     _phi = 0.5 * np.arctan(2 * _max / (matrix[_i][_i] - matrix[_j][_j]))
-    return [np.sin(_phi), np.cos(_phi)]
+    return np.sin(_phi), np.cos(_phi)
 
 
 # Метод вращения Якоби
