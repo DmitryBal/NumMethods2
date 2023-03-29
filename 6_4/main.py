@@ -1,24 +1,52 @@
 import numpy as np
-from numpy import polyval as f
-from func import derivative, f_conv, find_AB
+from sympy import diff, symbols
+
 epsilon = 0.001
-c = np.array([1.0, 0.0, 0.0, 0.0, 0.0, -5.0, -2.0])
-n = len(c)
+f_x = 'x^6 - 5*x - 2'
+t = 2.5
+t_0 = 2.0
+ab = np.array([1.0, 2.0])
+
+
+# Приближение функции f(x) = x^6 - 5x - 2
+def f_conv(x):
+    return (5*x + 2)**(1/6)
+
+
+def transform(equation):
+    equation = equation.replace(" - ", " + -")
+    equation = equation.replace("x^", "x**")
+    equation = equation.replace('e^x', 'e(x)')
+    return equation.split(' + ')
+
+
+def f(value, func=transform(f_x)):
+    str_value = str(value)
+    parts_with_values = (part.replace("x", str_value) for part in func)
+    return sum((eval(part) for part in parts_with_values))
+
+
+def _f(value, func=f_x):
+    func = func.replace('e^x', 'exp(x)')
+    x = symbols('x')
+    return diff(func).evalf(subs={x: value})
 
 
 # Метод половинного деления
-def half_del(arr, a_b, eps, name):
+def half_del(a_b, eps, name):
     print('\n')
     print(name)
     k = 1
     _a = a_b[0]
     _b = a_b[1]
+    print('[a_0, b_0] = [', _a, _b, ']\n')
+    c_k = 0.5 * (_a + _b)
     while (_b - _a) > eps:
-        c_k = 0.5 * (_a + _b)
-        if f(arr, _a)*f(arr, c_k) < 0:
+        if f(_a)*f(c_k) < 0:
             _b = c_k
-        if f(arr, _b)*f(arr, c_k) < 0:
+        if f(_b)*f(c_k) < 0:
             _a = c_k
+        c_k = 0.5 * (_a + _b)
         print('N =', k)
         print(f'[a_{k}, b_{k}] = [', _a, ',', _b, ']')
         print(f'c_{k} =', c_k)
@@ -28,21 +56,20 @@ def half_del(arr, a_b, eps, name):
 
 
 # Метод простой итерации / Метод Ньютона
-def iteration(arr, _arr, x, eps, name):
+def iteration(x, eps, name):
     print(name)
-    k = 0
+    k = 1
     x_new = 0
     while np.absolute(x_new - x) > eps or k == 0:
         if name == 'Метод простой итерации':
             x = x_new
             x_new = f_conv(x)
         elif name == 'Метод Ньютона':
-            if k != 0:
+            if k != 1:
                 x = x_new
-            x_new = x - f(arr, x) / f(_arr, x)
+            x_new = x - f(x) / _f(x)
         else:
-            print('Выберете один из реализованных методов')
-            return 0
+            quit(1)
         print('N =', k)
         print('x =', x_new)
         print('---------------------------------------\n')
@@ -51,18 +78,18 @@ def iteration(arr, _arr, x, eps, name):
 
 
 # Метод касательных
-def tangential(arr, x0, x1, eps, name):
+def tangential(x0, x1, eps, name):
     print(name)
-    k = 0
-    f_x0 = f(arr, x0)
-    f_x1 = f(arr, x1)
+    k = 1
+    f_x0 = f(x0)
+    f_x1 = f(x1)
     while abs(f_x1 - f_x0) > eps:
         det = (f_x1 - f_x0) / (x1 - x0)
         x = x1 - f_x1 / det
         x0 = x1
         x1 = x
         f_x0 = f_x1
-        f_x1 = f(arr, x1)
+        f_x1 = f(x1)
         print('N =', k)
         print('x =', x)
         print('---------------------------------------\n')
@@ -71,19 +98,15 @@ def tangential(arr, x0, x1, eps, name):
 
 
 if __name__ == '__main__':
-    _c = np.append(c[0:n-1], c[n-1])
-    print(_c)
-    ab = find_AB(c, n)
     N = [0]*4
     X = [0]*4
-    print('f(x) =', c[0], '* x^6 +', c[-2], '* x +', c[-1])
+    print('f(x) =', f_x)
     title = ['Метод половинного деления', 'Метод простой итерации', 'Метод Ньютона', 'Метод касательных']
-    X[0], N[0] = half_del(c, ab, epsilon, title[0])
-    X[1], N[1] = iteration(c, _c, 2.5, epsilon, title[1])
-    _c = derivative(c, n)
-    X[2], N[2] = iteration(c, _c, 2.5, epsilon, title[2])
-    X[3], N[3] = tangential(c, 2, 2.5, epsilon, title[3])
+    X[0], N[0] = half_del(ab, epsilon, title[0])
+    X[1], N[1] = iteration(t, epsilon, title[1])
+    X[2], N[2] = iteration(t, epsilon, title[2])
+    X[3], N[3] = tangential(t_0, t, epsilon, title[3])
     print('\nepsilon =', epsilon)
     for i in range(4):
-        print(title[i], 'x =', X[i], '=> f(x) =', f(c, X[i]), '\t| Количество итераций =', N[i])
+        print(title[i], 'x =', X[i], '=> f(x) =', f(X[i]), '\t| Количество итераций =', N[i]-1)
 
