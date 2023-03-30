@@ -19,7 +19,7 @@
  - Возвращает: матрицу, в которой k-строка заменена на строку, где элемент matrix[k][k] является опорным.
  - **В функции используется**:
      - Функция [max_elem(matrix, j)](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-max_elemmatrix-j)
-     - [numpy.delete(arr, obj, axis=None)](https://note.nkmk.me/en/python-numpy-delete/)
+     - Встроенная функция [numpy.delete(arr, obj, axis=None)](https://note.nkmk.me/en/python-numpy-delete/)
  ### def triangle(matrix):
   - Принимает на вход параметр: *matrix* - матрица вида **n+1** x **n**
   - Возвращает: матрицу приведенную к верхнему треугольному виду
