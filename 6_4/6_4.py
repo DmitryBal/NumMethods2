@@ -69,7 +69,8 @@ def iteration(x, eps, name):
                 x = x_new
             x_new = x - f(x) / _f(x)
         else:
-            quit(1)
+            print('error')
+            return 0
         print('N =', k)
         print('x =', x_new)
         print('---------------------------------------\n')
