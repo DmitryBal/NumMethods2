@@ -50,6 +50,6 @@ def gauss(matrix):
 
 if __name__ == '__main__':
     printMatrix(SLAY)
-    x = gauss(SLAY)
+    X = gauss(SLAY)
     for i in range(n):
-      print(f'x{i + 1} = ', x[i])
+        print(f'x{i + 1} = ', X[i])
