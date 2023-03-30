@@ -10,5 +10,5 @@
 
 ![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) ![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) ![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) 
 
-![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) ![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) ![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) 
+
 
