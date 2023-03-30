@@ -1,4 +1,5 @@
 # 6_3 - Итерационные методы решения СЛАУ
+[Теория](https://mathhelpplanet.com/static.php?p=metody-resheniya-sistem-nelineynykh-uravneniy)
 ## 6_3.py:
 ### def printMatrix(a, b):
   - Принимает на вход параметр: *a* - матрица вида **n** x **n**, *b* - столбец решений матрицы *а*
