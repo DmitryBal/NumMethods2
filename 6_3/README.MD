@@ -12,4 +12,4 @@
    - Возвращает: матрицу *a* вида **n-1** x **n-1**, и столбец *b*, разделенный на главную диагональ матрицы *a*
    - **В функции используется**:
        - Встроенная функция [numpy.diagonal(a, offset=0, axis1=0, axis2=1)](https://numpy.org/doc/stable/reference/generated/numpy.diagonal.html)
-       - [a[~np.eye(a.shape[0], dtype=bool)].reshape(a.shape[0], -1)](https://stackoverflow.com/questions/46736258/deleting-diagonal-elements-of-a-numpy-array)
+       - masking: [a[~np.eye(a.shape[0], dtype=bool)].reshape(a.shape[0], -1)](https://stackoverflow.com/questions/46736258/deleting-diagonal-elements-of-a-numpy-array)
