@@ -11,7 +11,7 @@
 ![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) ![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) ![#f5f5f5](https://placehold.co/15x15/f5f5f5/f5f5f5.png) 
 
 ## def phi(matrix, _max, _i, _j):
-   - Принимает на вход параметры:  *matrix* - матрица вида **n** x **n** и *_max*, *i*, *j* - результат работы функции [def max_elem(matrix):](https://github.com/DmitryBal/NumMethods2/tree/main/6_6#def-max_elemmatrix)
+    - Принимает на вход параметры:  *matrix* - матрица вида **n** x **n** и *_max*, *i*, *j* - результат работы функции [def max_elem(matrix):](https://github.com/DmitryBal/NumMethods2/tree/main/6_6#def-max_elemmatrix)
    - Возвращает: sin, cos угла поворота
 ### def method_turn(matrix):
     - Принимает на вход параметр: *matrix* - матрица вида **n** x **n** 
