@@ -18,3 +18,8 @@
      -  если *flag* = 1, то вычисляется с помощью метода Зейделя; 
      -  если *flag* = 0, то вычисляется с помощью метода простых итераций
    - Возвращает: *x* - решение системы *ax = b*
+   - **В функции используется**:
+       - Встроенная функция [numpy.zerros()](https://numpy.org/doc/stable/reference/generated/numpy.zeros.html)
+       - Встроенная функция [numpy.delete(arr, obj, axis=None)](https://numpy.org/doc/stable/reference/generated/numpy.delete.html)
+       - Функция [max_div(arr_1, arr_2)](https://github.com/DmitryBal/NumMethods2/tree/main/6_3#def-max_divarr_1-arr_2)
+  
