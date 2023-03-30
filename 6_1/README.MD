@@ -20,7 +20,7 @@
  - **В функции используется**:
      - Функция [max_elem(matrix, j)](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-max_elemmatrix-j)
      - Встроенная функция [numpy.delete(arr, obj, axis)](https://note.nkmk.me/en/python-numpy-delete/)
-     - Если ранг матрицы A < ранга матрицы n, то Слау несовместна *=>* используется встроенная команда выхода: [quit()](https://pythonguides.com/python-exit-command/)
+     - Если ранг матрицы A < ранга матрицы n, то Слау несовместна => используется встроенная команда выхода: [quit()](https://pythonguides.com/python-exit-command/)
  ### def triangle(matrix):
   - Принимает на вход параметр: *matrix* - матрица вида **n+1** x **n**
   - Возвращает: матрицу приведенную к верхнему треугольному виду
