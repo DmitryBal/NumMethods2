@@ -14,9 +14,9 @@ def f_conv(x):
 
 
 def transform(equation):
-    equation.replace(" - ", " + -")
-    equation.replace("x^", "x**")
-    equation.replace('e^x', 'e(x)')
+    equation = equation.replace(" - ", " + -")
+    equation = equation.replace("x^", "x**")
+    equation = equation.replace('e^x', 'e(x)')
     return equation.split(' + ')
 
 
