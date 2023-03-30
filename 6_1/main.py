@@ -42,12 +42,14 @@ def gauss(matrix):
         b = matrix[:, n]
         a = np.delete(matrix, np.s_[n:n + 1], axis=1)
         x = np.linalg.solve(a, b)
-        for i in range(n):
-            print(f'x{i + 1} = ', x[i])
+        return x
     else:
         print("СЛАУ вырождена, т.к. определитель равен нулю")
+        return 0
 
 
 if __name__ == '__main__':
     printMatrix(SLAY)
-    gauss(SLAY)
+    x = gauss(SLAY)
+    for i in range(n):
+      print(f'x{i + 1} = ', x[i])
