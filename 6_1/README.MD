@@ -28,3 +28,12 @@
       - Функция [sub(matrix, row_one, row_two, coef)](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-submatrix-row_one-row_two-coef)
       - Функция [printMatrix(matrix)](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-printmatrixmatrix)
       - Функция [swap(matrix, k)](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-submatrix-row_one-row_two-coef)
+### def gauss(matrix):
+ - Принимает на вход параметр: *matrix* - матрица вида **n+1** x **n** 
+ - Возвращает: массив корней Слау 
+ - **В функции используется**:
+     - Функция [def determinant(matrix)](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-determinantmatrix)
+     - Функция [def triangle(matrix)](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-trianglematrix)
+     - Встроенная функция [numpy.delete(arr, obj, axis)](https://note.nkmk.me/en/python-numpy-delete/)
+     - Встроенная функция [numpy.linalg.solve(a, b)](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html)
+     
