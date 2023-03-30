@@ -1,4 +1,5 @@
 # 6_1 - Метод Гаусса
+[Теория](https://mathhelpplanet.com/static.php?p=chislennyye-metody-resheniya-slau)
 ## func.py:
 ### def printMatrix(matrix):
   - Принимает на вход параметр: *matrix* - матрица вида **n+1** x **n** 
