@@ -1,4 +1,5 @@
 # 6_2 - Метод прогонки
+[Теория](https://mathhelpplanet.com/static.php?p=chislennyye-metody-resheniya-slau)
 ## 6_2.py:
 ### def printMatrix(a, b):
   - Принимает на вход параметр: *a* - матрица вида **n** x **n**, *b* - столбец решений матрицы *а*
