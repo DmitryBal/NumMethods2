@@ -18,5 +18,5 @@
  - Принимает на вход параметры: *matrix* матрица и *k* - номер последней строки, которая была преобразован
  - Возвращает: матрицу, в которой k-строка заменена на строку, где элемент matrix[k][k] является опорным.
  - **В функции используется**:
-     - Функция max_elem(matrix, j) [a relative link](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-max_elemmatrix-j)
+     - Функция [max_elem(matrix, j)](https://github.com/DmitryBal/NumMethods2/tree/main/6_1#def-max_elemmatrix-j)
      - аввау
