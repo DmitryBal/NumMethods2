@@ -1,5 +1,6 @@
 import numpy as np
 from sympy import diff, symbols
+from math import log2
 from numpy import cos, sin, log10 as lg, log as ln, exp as e
 
 epsilon = 0.001
