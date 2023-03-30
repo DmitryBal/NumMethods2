@@ -1,5 +1,6 @@
 import numpy as np
 from sympy import diff, symbols
+from numpy import cos, sin, log10 as lg, log as ln, exp as e
 
 epsilon = 0.001
 f_x = 'x^6 - 5*x - 2'
