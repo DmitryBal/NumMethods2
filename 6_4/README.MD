@@ -1,7 +1,8 @@
 # 6_4 - Решение нелинейных уравнений
 [Teория](https://mathhelpplanet.com/static.php?p=metody-resheniya-nelineynykh-uravneniy)
 ## input_Variant(n).py:
-    Входные данные для Вариантов 1-6
+    Входные данные для Вариантов 1-5
+    *Вариант 6 - встроенная функция diff не поддреживает lg
     n - номер варианта
 ## 6_4.py:
 ### Входные данные:
