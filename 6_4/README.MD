@@ -1,6 +1,6 @@
 # 6_4 - Решение нелинейных уравнений
 [Teория](https://mathhelpplanet.com/static.php?p=metody-resheniya-nelineynykh-uravneniy)
-## input_Variant*n*.py:
+## input_Variant(n).py:
     Входные данные для Вариантов 1-6
     n - номер варианта
 ## 6_4.py:
