@@ -22,14 +22,16 @@ def transform(equation):
     return equation.split(' + ')
 
 
-def f(value, func=transform(f_x)):
+def f(value):
+    func = transform(f_x)
     str_value = str(value)
     parts_with_values = (part.replace("x", str_value) for part in func)
     return sum((eval(part) for part in parts_with_values))
 
 
-def _f(value, func=f_x):
-    func = func.replace('e^x', 'exp(x)')
+def _f(value):
+    func = f_x.replace('e^x', 'exp(x)')
+    func = func.replace('lg', '(1/ln(10))*ln')
     x = symbols('x')
     return diff(func).evalf(subs={x: value})
 
