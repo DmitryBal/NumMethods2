@@ -3,13 +3,7 @@ from sympy import diff, symbols
 from math import log2
 from numpy import cos, sin, log10 as lg, log as ln, exp as e
 
-epsilon = 0.001
-t = 2.5
-t_0 = 2.0
 
-
-ab = np.array([1.0, 2.0])
-f_x = 'x^6 - 5*x - 2'
 # Приближение функции f(x) = x^6 - 5x - 2
 def f_conv(x):
     return (5*x + 2)**(1/6)
@@ -103,6 +97,11 @@ def tangential(x0, x1, eps, name):
 
 
 if __name__ == '__main__':
+    epsilon = 0.001
+    t = 2.5
+    t_0 = 2.0
+    ab = np.array([1.0, 2.0])
+    f_x = 'x^6 - 5*x - 2'
     N = [0]*4
     X = [0]*4
     print('f(x) =', f_x)
