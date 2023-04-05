@@ -1,4 +1,6 @@
 import numpy as np
+from numpy import polyval as f
+
 
 eps = 0.01
 A = np.array([[-2.0, -7.0, -8.0, -2.0],
@@ -81,8 +83,8 @@ if __name__ == '__main__':
     test_1 = []
     test_2 = []
     for i in range(n):
-        test_1.append(sum(A[i, :] * X_z))
-        test_2.append(sum(A[i, :] * X_i))
+        test_1.append(f(A[i, :], X_z))
+        test_2.append(f(A[i, :], X_i))
     print('Метод Зейделя: x =', X_z)
     print('Метод простых итераций: x =', X_i)
     print('Решение с помощью встроенной функции numpy.linalg.solve(): x =', np.linalg.solve(A, B))
