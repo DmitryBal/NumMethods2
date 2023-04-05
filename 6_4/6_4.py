@@ -113,4 +113,3 @@ if __name__ == '__main__':
     print('\nepsilon =', epsilon)
     for i in range(4):
         print(title[i], 'x =', X[i], '=> f(x) =', f(X[i], T_f), '\t| Количество итераций =', N[i]-1)
-
