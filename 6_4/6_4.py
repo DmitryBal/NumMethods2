@@ -16,22 +16,21 @@ def transform(equation):
     return equation.split(' + ')
 
 
-def f(value):
-    func = transform(f_x)
+def f(value, func):
     str_value = str(value)
-    parts_with_values = (part.replace("x", str_value) for part in func)
+    parts_with_values = (part.replace('x', str_value) for part in func)
     return sum((eval(part) for part in parts_with_values))
 
 
-def _f(value):
-    func = f_x.replace('e^x', 'exp(x)')
+def _f(value, func):
+    func = func.replace('e^x', 'exp(x)')
     func = func.replace('lg', '(1/ln(10))*ln')
     x = symbols('x')
     return diff(func).evalf(subs={x: value})
 
 
 # Метод половинного деления
-def half_del(a_b, eps, name):
+def half_del(a_b, eps, fx, name):
     print('\n')
     print(name)
     k = 1
@@ -40,9 +39,9 @@ def half_del(a_b, eps, name):
     print('[a_0, b_0] = [', _a, _b, ']\n')
     c_k = 0.5 * (_a + _b)
     while (_b - _a) > eps:
-        if f(_a)*f(c_k) < 0:
+        if f(_a, fx)*f(c_k, fx) < 0:
             _b = c_k
-        if f(_b)*f(c_k) < 0:
+        if f(_b, fx)*f(c_k, fx) < 0:
             _a = c_k
         c_k = 0.5 * (_a + _b)
         print('N =', k)
@@ -54,7 +53,7 @@ def half_del(a_b, eps, name):
 
 
 # Метод простой итерации / Метод Ньютона
-def iteration(x, eps, name):
+def iteration(x, eps, fx, Tf, name):
     print(name)
     k = 1
     x_new = 0
@@ -65,7 +64,7 @@ def iteration(x, eps, name):
         elif name == 'Метод Ньютона':
             if k != 1:
                 x = x_new
-            x_new = x - f(x) / _f(x)
+            x_new = x - f(x, Tf) / _f(x, fx)
         else:
             print('error')
             return 0
@@ -77,18 +76,18 @@ def iteration(x, eps, name):
 
 
 # Метод касательных
-def tangential(x0, x1, eps, name):
+def tangential(x0, x1, eps, Tf, name):
     print(name)
     k = 1
-    f_x0 = f(x0)
-    f_x1 = f(x1)
+    f_x0 = f(x0, Tf)
+    f_x1 = f(x1, Tf)
     while abs(f_x1 - f_x0) > eps:
         det = (f_x1 - f_x0) / (x1 - x0)
         x = x1 - f_x1 / det
         x0 = x1
         x1 = x
         f_x0 = f_x1
-        f_x1 = f(x1)
+        f_x1 = f(x1, Tf)
         print('N =', k)
         print('x =', x)
         print('---------------------------------------\n')
@@ -102,15 +101,16 @@ if __name__ == '__main__':
     t_0 = 2.0
     ab = np.array([1.0, 2.0])
     f_x = 'x^6 - 5*x - 2'
+    T_f = transform(f_x)
     N = [0]*4
     X = [0]*4
     print('f(x) =', f_x)
     title = ['Метод половинного деления', 'Метод простой итерации', 'Метод Ньютона', 'Метод касательных']
-    X[0], N[0] = half_del(ab, epsilon, title[0])
-    X[1], N[1] = iteration(t, epsilon, title[1])
-    X[2], N[2] = iteration(t, epsilon, title[2])
-    X[3], N[3] = tangential(t_0, t, epsilon, title[3])
+    X[0], N[0] = half_del(ab, epsilon, T_f, title[0])
+    X[1], N[1] = iteration(t, epsilon, f_x, T_f, title[1])
+    X[2], N[2] = iteration(t, epsilon, f_x, T_f, title[2])
+    X[3], N[3] = tangential(t_0, t, epsilon, T_f, title[3])
     print('\nepsilon =', epsilon)
     for i in range(4):
-        print(title[i], 'x =', X[i], '=> f(x) =', f(X[i]), '\t| Количество итераций =', N[i]-1)
+        print(title[i], 'x =', X[i], '=> f(x) =', f(X[i], T_f), '\t| Количество итераций =', N[i]-1)
 
