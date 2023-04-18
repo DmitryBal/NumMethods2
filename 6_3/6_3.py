@@ -76,6 +76,7 @@ def iteration(flag, a, b, epsilon):
 if __name__ == '__main__':
     printMatrix(A, B)
     _A, _B = new_ab(A, B)
+    print(_A, _B)
     print('Метод Зейделя:')
     X_z = iteration(1, _A, _B, eps)
     print('\nМетод простых итераций:')
@@ -83,8 +84,8 @@ if __name__ == '__main__':
     test_1 = []
     test_2 = []
     for i in range(n):
-        test_1.append(f(A[i, :], X_z))
-        test_2.append(f(A[i, :], X_i))
+        test_1.append(sum(A[i, :]*X_z))
+        test_2.append(sum(A[i, :]*X_i))
     print('Метод Зейделя: x =', X_z)
     print('Метод простых итераций: x =', X_i)
     print('Решение с помощью встроенной функции numpy.linalg.solve(): x =', np.linalg.solve(A, B))
