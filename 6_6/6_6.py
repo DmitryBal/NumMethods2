@@ -60,3 +60,4 @@ if __name__ == '__main__':
     print('\nСобственные вектора:')
     for j in range(n):
         print(f'X{j + 1} = ', X[:, j])
+    print(np.linalg.eigh(A))
